@@ -1,0 +1,77 @@
+@base = http://127.0.0.1:8080
+
+### Health
+GET {{base}}/health
+
+### 1) Instagram (slug fixo)
+POST {{base}}/links
+Content-Type: application/json
+
+{
+  "slug": "promo-insta-01",
+  "targetUrl": "https://example.com/promo",
+  "utm": { "source": "instagram", "medium": "bio", "campaign": "lancamento" }
+}
+
+### 2) WhatsApp (slug fixo)
+POST {{base}}/links
+Content-Type: application/json
+
+{
+  "slug": "vip-whats-01",
+  "targetUrl": "https://example.com/cupons",
+  "utm": { "source": "whatsapp", "medium": "broadcast", "campaign": "cupom-10", "content": "cta-botao" }
+}
+
+### 3) Newsletter (slug fixo)
+POST {{base}}/links
+Content-Type: application/json
+
+{
+  "slug": "newsletter-nov",
+  "targetUrl": "https://example.com/blog/novidades",
+  "utm": { "source": "newsletter", "medium": "email", "campaign": "novembro-2025", "term": "blackfriday", "content": "hero-banner" }
+}
+
+### 4) TikTok Ads (slug fixo)
+POST {{base}}/links
+Content-Type: application/json
+
+{
+  "slug": "ads-tiktok-01",
+  "targetUrl": "https://example.com/curso-node",
+  "utm": { "source": "tiktok", "medium": "cpc", "campaign": "video-1", "term": "curso-node" }
+}
+
+### 5) QR Code/Offline (sem anexar UTM no destino)
+POST {{base}}/links
+Content-Type: application/json
+
+{
+  "slug": "qr-loja-01",
+  "targetUrl": "https://example.com/landing-offline",
+  "utm": { "source": "print", "medium": "offline", "campaign": "folheto-loja" },
+  "appendUtm": false
+}
+
+### 6) Slug automático (deixa a API gerar)
+POST {{base}}/links
+Content-Type: application/json
+
+{
+  "targetUrl": "https://example.com/teaser",
+  "utm": { "source": "instagram", "medium": "stories", "campaign": "stories-teaser" }
+}
+
+### Listar seus links (do usuário atual)
+GET {{base}}/links?limit=50
+
+### (Teste de conflito) criar o mesmo slug de novo → deve dar 409
+POST {{base}}/links
+Content-Type: application/json
+
+{
+  "slug": "promo-insta-01",
+  "targetUrl": "https://example.com/qualquer",
+  "utm": { "source": "teste", "medium": "dup", "campaign": "colisao" }
+}

@@ -1,0 +1,28 @@
+﻿# Node
+node_modules
+npm-debug.log*
+pnpm-lock.yaml
+.pnpm-store
+
+# Builds / cache
+dist
+build
+.vercel
+coverage
+
+# Envs (NÃO commitar)
+.env
+.env*.local
+api/.env*
+app/.env*
+serviceAccount.json
+
+# Sistema/IDE
+.DS_Store
+Thumbs.db
+.vscode
+.idea
+
+# Firebase/Firestore logs
+api/firebase*.log
+api/firestore*.log
