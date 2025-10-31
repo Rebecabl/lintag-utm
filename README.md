@@ -43,7 +43,7 @@ Arquitetura: **API** (Node.js/Express + Firebase Admin/Firestore) e **Frontend**
 
 ## Ambiente
 
-### API (`api/.env`) — escolha **uma** estratégia de credencial:
+### API (`api/.env`) 
 
 #### Tabela de estratégias
 | Estratégia                     | Variável                         | Exemplo |
